@@ -21,5 +21,13 @@
        (let [[twos threes] (count-frequencies)]
          (* twos threes)))
 
+(defn diff-by-word [w1 w2]
+  (->> (map vector w1 w2)
+       (filter #(not= (first %1) (last %1)))
+       (count)))
+
+(defn problem2 []
+  )
+
 (defn -main [& args]
   (println (problem1)))
