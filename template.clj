@@ -1,5 +1,7 @@
 #!/usr/bin/env boot
 
+(require '[clojure.string :as string])
+
 (defn parse-input []
   (->> (slurp "input")
        (string/split-lines)))
