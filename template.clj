@@ -1,7 +1,7 @@
 #!/usr/bin/env boot
 
 (defn parse-input []
-  (->> (slurp "input1")
+  (->> (slurp "input")
        (string/split-lines)))
 
 (defn problem1 []
