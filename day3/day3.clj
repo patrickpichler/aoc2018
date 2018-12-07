@@ -60,5 +60,20 @@
               (count)
               )))
 
+(defn problem2 []
+       (let [pieces (parse-input)
+             {min-x :min-x 
+              min-y :min-y 
+              max-x :max-x 
+              max-y :max-y } (find-min-max-x-y pieces)]
+         (as-> (range (to-index max-x min-x min-y) (dec (to-index max-x max-x max-y))) l
+              (map (partial to-x-y max-x) l)
+              (pmap (fn [[x y]] (map :id (filter (partial intersect? x y) pieces))) l)
+              (filter #(< 1 (count %1)) l)
+              (flatten l)
+              (set l)
+              (filter #(not (contains? l (:id %1))) pieces)
+              (map :id l))))
+
 (defn -main [& args]
-  (println (problem1)))
+  (println (problem2)))
